@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PARALLAX / Wireframe — Contact</title>
+  <meta name="description" content="Low-fidelity wireframe for the PARALLAX contact page.">
+  <meta name="theme-color" content="#e8e8e2">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/wireframe.css">
+</head>
+<body>
+  <div class="wf-page" id="top">
+    <div class="chrome">
+      <div class="chrome-left">
+        <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span class="chrome-url">parallax.local/wireframe/contact</span>
+      </div>
+      <div class="chrome-right">
+        <span class="wf-badge">WIREFRAME v0.1</span>
+        <button id="notes-toggle" type="button" aria-pressed="true">ANNOTATIONS: ON</button>
+        <a href="../index.html">VIEW FINAL SITE ↗</a>
+      </div>
+    </div>
+
+    <div class="legend" aria-label="Wireframe legend">
+      <span><i class="key-real"></i> Solid / real content</span>
+      <span><i class="key-placeholder"></i> Dashed / placeholder</span>
+      <span><i class="key-anno"></i> Blue / annotation</span>
+      <span>Build 0.1 / 1 of 4 slots filled</span>
+    </div>
+
+    <nav class="wf-nav" aria-label="Wireframe pages">
+      <a class="wf-brand" href="index.html"><strong>PARALLAX</strong><span>/ WF</span></a>
+      <div class="wf-links">
+        <a data-n="01" href="index.html">Home</a>
+        <a data-n="02" href="works.html">Works</a>
+        <a data-n="03" href="about.html">About</a>
+        <a data-n="04" href="contact.html" aria-current="page">Contact</a>
+        <a data-n="05" href="case-study.html">Case study</a>
+      </div>
+      <span class="screen-no">Screen 04 / 05</span>
+    </nav>
+
+    <main>
+      <header class="page-head">
+        <div>
+          <p class="section-meta"><b>04</b> Contact / mailbox</p>
+          <h1 class="wf-h1">SEND A<span class="muted">_</span>SIGNAL.</h1>
+          <p class="wf-sub">One form, one direct email, three public links. The form is a prototype; the layout should show the validation and success states clearly.</p>
+        </div>
+        <aside class="right">
+          <div class="status-top"><span>Channel</span><b>Open</b></div>
+          <div class="pips" aria-hidden="true"><span class="on"></span><span class="on"></span><span class="on"></span><span class="on"></span></div>
+          <p class="copy-slot">[ ASYNC / METRO MANILA / GMT+8 ]</p>
+        </aside>
+      </header>
+
+      <section class="wf-section">
+        <p class="anno">Left: form with name, email, subject, message, submit. Right: direct contact, response expectation, and social links. Below: the success state that appears after submit.</p>
+
+        <div class="contact-grid">
+          <div class="form-panel">
+            <h2>WRITE TO THE PARTY.</h2>
+            <p class="form-note">Prototype only / no server / no tracking</p>
+
+            <form id="wf-contact-form" novalidate>
+              <div class="form-grid">
+                <div class="field">
+                  <label for="wf-name">Your name</label>
+                  <input id="wf-name" name="name" type="text" placeholder="[ NAME ]" autocomplete="name">
+                </div>
+                <div class="field">
+                  <label for="wf-email">Email</label>
+                  <input id="wf-email" name="email" type="email" placeholder="[ EMAIL ]" autocomplete="email">
+                </div>
+              </div>
+              <div class="field">
+                <label for="wf-subject">Subject</label>
+                <select id="wf-subject" name="subject">
+                  <option>[ COLLABORATION ]</option>
+                  <option>[ CRITIQUE / FEEDBACK ]</option>
+                  <option>[ JOIN THE PARTY ]</option>
+                  <option>[ JUST SAYING HI ]</option>
+                </select>
+              </div>
+              <div class="field">
+                <label for="wf-message">Message</label>
+                <textarea id="wf-message" name="message" placeholder="[ MESSAGE — WHAT YOU ARE MAKING, WHAT YOU NEED, OR WHAT WE SHOULD LOOK AT ]"></textarea>
+              </div>
+              <div class="form-actions">
+                <button class="wf-btn primary" type="submit">[ TRANSMIT MESSAGE ]</button>
+                <span class="form-status" id="form-status" role="status"></span>
+              </div>
+              <p class="copy-slot">[ FORM VALIDATION: NAME / VALID EMAIL / MESSAGE MIN. 10 CHARACTERS ]</p>
+            </form>
+          </div>
+
+          <aside class="side-panel">
+            <div class="side-box">
+              <h3>DIRECT LINE</h3>
+              <ul>
+                <li><span>Email</span><b>[ GROUP EMAIL ]</b></li>
+                <li><span>Group</span><b>4 players / BSIT 4</b></li>
+                <li><span>Base</span><b>Metro Manila, PH</b></li>
+                <li><span>Reply</span><b>2–3 days</b></li>
+                <li><span>Status</span><b>OPEN</b></li>
+              </ul>
+            </div>
+
+            <div class="side-box">
+              <h3>ELSEWHERE</h3>
+              <ul>
+                <li><span>GitHub</span><b><a href="https://github.com/acceptance27/qweeps" target="_blank" rel="noopener">[ QWEEPS ↗ ]</a></b></li>
+                <li><span>Zenodo</span><b><a href="https://doi.org/10.5281/zenodo.23791785" target="_blank" rel="noopener">[ DOI ↗ ]</a></b></li>
+                <li><span>ORCID</span><b><a href="https://orcid.org/0009-0003-2325-7968" target="_blank" rel="noopener">[ PROFILE ↗ ]</a></b></li>
+              </ul>
+            </div>
+
+            <div class="side-box">
+              <h3>SUCCESS STATE</h3>
+              <p>[ AFTER SUBMIT: “MESSAGE QUEUED” + COPY MESSAGE + OPEN IN MAIL APP + WRITE ANOTHER ]</p>
+              <p class="copy-slot">[ SHOW THIS STATE IN THE FINAL PROTOTYPE ]</p>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="wf-section">
+        <div class="row-between">
+          <div>
+            <p class="section-meta"><b>Flow</b> Field checklist</p>
+            <h2 class="wf-h2">WHAT THE FORM<br>NEEDS TO DO.</h2>
+          </div>
+          <span class="tag blue">Interaction spec</span>
+        </div>
+        <div class="grid-4 mt-16">
+          <div class="case-block"><h3>01 / Validate</h3><p>Name, valid email, message ≥ 10 characters. Inline error message and focus on the first invalid field.</p></div>
+          <div class="case-block"><h3>02 / Compose</h3><p>Show the composed message, not a fake send. No backend in the prototype.</p></div>
+          <div class="case-block"><h3>03 / Escape</h3><p>Copy message and open in mail app. Both actions are visible after submit.</p></div>
+          <div class="case-block"><h3>04 / Reset</h3><p>Return to the form without losing the user's place or the page context.</p></div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="wf-footer">
+      <div>
+        <p class="big">PARALLAX / WIREFRAME</p>
+        <p>Structural prototype for the Digital Interface Design final project. Not final styling. One real player, three open slots.</p>
+      </div>
+      <div>
+        <h3>Pages</h3>
+        <ul>
+          <li><a href="index.html">01 / Home</a></li>
+          <li><a href="works.html">02 / Works</a></li>
+          <li><a href="about.html">03 / About</a></li>
+          <li><a href="contact.html">04 / Contact</a></li>
+          <li><a href="case-study.html">05 / Case study</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Status</h3>
+        <ul>
+          <li>Build 0.1 / wireframe</li>
+          <li>1 of 4 content slots filled</li>
+          <li><a href="../index.html">Open the final site ↗</a></li>
+        </ul>
+      </div>
+    </footer>
+    <div class="wf-bottom">
+      <span>PARALLAX / WIREFRAME / 2026</span>
+      <span>Low-fidelity structure — not the final site</span>
+      <a href="#top">Back to top ↑</a>
+    </div>
+  </div>
+
+  <div class="wf-toast" id="wf-toast" role="status" aria-live="polite"></div>
+  <script src="assets/wireframe.js" defer></script>
+</body>
+</html>

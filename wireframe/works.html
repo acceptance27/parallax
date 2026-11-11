@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>PARALLAX / Wireframe — Works</title>
+  <meta name="description" content="Low-fidelity wireframe for the PARALLAX gallery and works page.">
+  <meta name="theme-color" content="#e8e8e2">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="stylesheet" href="assets/wireframe.css">
+</head>
+<body>
+  <div class="wf-page" id="top">
+    <div class="chrome">
+      <div class="chrome-left">
+        <span class="dots" aria-hidden="true"><i></i><i></i><i></i></span>
+        <span class="chrome-url">parallax.local/wireframe/works</span>
+      </div>
+      <div class="chrome-right">
+        <span class="wf-badge">WIREFRAME v0.1</span>
+        <button id="notes-toggle" type="button" aria-pressed="true">ANNOTATIONS: ON</button>
+        <a href="../index.html">VIEW FINAL SITE ↗</a>
+      </div>
+    </div>
+
+    <div class="legend" aria-label="Wireframe legend">
+      <span><i class="key-real"></i> Solid / real content</span>
+      <span><i class="key-placeholder"></i> Dashed / placeholder</span>
+      <span><i class="key-anno"></i> Blue / annotation</span>
+      <span>Build 0.1 / 1 of 4 slots filled</span>
+    </div>
+
+    <nav class="wf-nav" aria-label="Wireframe pages">
+      <a class="wf-brand" href="index.html"><strong>PARALLAX</strong><span>/ WF</span></a>
+      <div class="wf-links">
+        <a data-n="01" href="index.html">Home</a>
+        <a data-n="02" href="works.html" aria-current="page">Works</a>
+        <a data-n="03" href="about.html">About</a>
+        <a data-n="04" href="contact.html">Contact</a>
+        <a data-n="05" href="case-study.html">Case study</a>
+      </div>
+      <span class="screen-no">Screen 02 / 05</span>
+    </nav>
+
+    <main>
+      <header class="page-head">
+        <div>
+          <p class="section-meta"><b>02</b> Gallery / works</p>
+          <h1 class="wf-h1">WORKS<span class="muted">.</span></h1>
+          <p class="wf-sub">Filterable project index. One real project, three reserved slots. This page is where the group visually proves that it is still forming.</p>
+        </div>
+        <aside class="right">
+          <div class="status-top"><span>Content status</span><b>1 / 4</b></div>
+          <div class="pips" aria-hidden="true"><span class="on"></span><span></span><span></span><span></span></div>
+          <p class="copy-slot">[ 3 SLOTS AWAITING SUBMISSION ]</p>
+        </aside>
+      </header>
+
+      <section class="wf-section">
+        <p class="anno">Layout: filter bar + 2×2 project grid. Each card needs a title, role, one image, two tags, a short description, and a link. The locked cards are structural placeholders, not invented projects.</p>
+
+        <div class="row-between">
+          <div class="filter-bar" role="group" aria-label="Filter works">
+            <button class="filter is-active" type="button" data-filter="all" aria-pressed="true">All <span>04</span></button>
+            <button class="filter" type="button" data-filter="complete" aria-pressed="false">Complete <span>01</span></button>
+            <button class="filter" type="button" data-filter="locked" aria-pressed="false">Locked <span>03</span></button>
+          </div>
+          <span class="tag blue">Filter states: all / complete / locked</span>
+        </div>
+
+        <div class="works-grid">
+          <article class="work-card real" data-status="complete">
+            <div class="work-top"><span>Save 01 / Rayven</span><span class="tag real">Complete</span></div>
+            <div class="placeholder" role="img" aria-label="Placeholder for QWEEPS project screenshot"><span>[ QWEEPS HERO SCREENSHOT ]</span></div>
+            <div class="work-body">
+              <h2 class="work-title">QWEEPS</h2>
+              <p class="work-sub">Live interactive visual teaching</p>
+              <p class="work-desc">[ 60-WORD PROJECT SUMMARY — REAL COPY EXISTS IN FINAL ]</p>
+              <div class="chips">
+                <span class="tag">AI systems</span><span class="tag">Interface</span><span class="tag">Research</span>
+              </div>
+              <div class="work-foot"><span><b>2026</b> / interface + systems</span><a href="case-study.html">[ Open case study → ]</a></div>
+            </div>
+          </article>
+
+          <article class="work-card" data-status="locked">
+            <div class="work-top"><span>Save 02 / Open slot</span><span class="tag placeholder-tag">Locked</span></div>
+            <div class="placeholder"><span>[ PROJECT IMAGE / 16:10 ]</span></div>
+            <div class="work-body">
+              <h2 class="work-title">PLAYER 02</h2>
+              <p class="work-sub">[ Project title placeholder ]</p>
+              <p class="work-desc">[ 80-WORD PROJECT DESCRIPTION — AWAITING PLAYER 02 ]</p>
+              <div class="chips">
+                <span class="tag placeholder-tag">Tag 01</span><span class="tag placeholder-tag">Tag 02</span>
+              </div>
+              <div class="work-foot"><span><b>Slot 02</b> reserved</span><span>[ Awaiting submission ]</span></div>
+            </div>
+          </article>
+
+          <article class="work-card" data-status="locked">
+            <div class="work-top"><span>Save 03 / Open slot</span><span class="tag placeholder-tag">Locked</span></div>
+            <div class="placeholder"><span>[ PROJECT IMAGE / 16:10 ]</span></div>
+            <div class="work-body">
+              <h2 class="work-title">PLAYER 03</h2>
+              <p class="work-sub">[ Project title placeholder ]</p>
+              <p class="work-desc">[ 80-WORD PROJECT DESCRIPTION — AWAITING PLAYER 03 ]</p>
+              <div class="chips">
+                <span class="tag placeholder-tag">Tag 01</span><span class="tag placeholder-tag">Tag 02</span>
+              </div>
+              <div class="work-foot"><span><b>Slot 03</b> reserved</span><span>[ Awaiting submission ]</span></div>
+            </div>
+          </article>
+
+          <article class="work-card" data-status="locked">
+            <div class="work-top"><span>Save 04 / Open slot</span><span class="tag placeholder-tag">Locked</span></div>
+            <div class="placeholder"><span>[ PROJECT IMAGE / 16:10 ]</span></div>
+            <div class="work-body">
+              <h2 class="work-title">PLAYER 04</h2>
+              <p class="work-sub">[ Project title placeholder ]</p>
+              <p class="work-desc">[ 80-WORD PROJECT DESCRIPTION — AWAITING PLAYER 04 ]</p>
+              <div class="chips">
+                <span class="tag placeholder-tag">Tag 01</span><span class="tag placeholder-tag">Tag 02</span>
+              </div>
+              <div class="work-foot"><span><b>Slot 04</b> reserved</span><span>[ Awaiting submission ]</span></div>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="wf-section">
+        <div class="row-between">
+          <div>
+            <p class="section-meta"><b>Submission</b> Packet / open call</p>
+            <h2 class="wf-h2">THE SLOT IS YOURS.<br>FILL IT.</h2>
+          </div>
+          <span class="tag placeholder-tag">3 open</span>
+        </div>
+        <p class="anno">Each teammate sends a small packet. Do not replace the card structure; only replace the dashed content inside it.</p>
+
+        <div class="packet">
+          <div>
+            <h3 class="wf-h3">REQUIRED PER SLOT</h3>
+            <ol class="steps">
+              <li><b>01</b><span>Three images at least 1600px wide + one portrait or avatar.</span></li>
+              <li><b>02</b><span>120-word bio, 150-word project statement, and your role.</span></li>
+              <li><b>03</b><span>Tools, year, and links. Keep it specific and credited.</span></li>
+            </ol>
+          </div>
+          <div>
+            <button class="wf-btn primary w-full" id="copy-brief" type="button">[ Copy brief template ]</button>
+            <p class="copy-slot">[ PLACEHOLDER ACTION — COPIES A TEXT TEMPLATE ]</p>
+          </div>
+        </div>
+      </section>
+
+      <section class="wf-section">
+        <p class="section-meta"><b>Expanded</b> Case-study structure</p>
+        <div class="grid-2">
+          <div>
+            <h2 class="wf-h2">ONE PROJECT<br>GETS A FULL PAGE.</h2>
+            <p class="wf-sub">QWEEPS opens into a case study: hero, brief, build, system, interface, result, reflection, next slot. The page is already wired; the final site supplies the production visuals.</p>
+            <div class="hero-actions">
+              <a class="wf-btn primary" href="case-study.html">[ Open wireframe case study → ]</a>
+            </div>
+          </div>
+          <div class="placeholder" role="img" aria-label="Placeholder for the case-study page preview">
+            <span>[ CASE-STUDY PAGE PREVIEW<br>6 SECTIONS / 1 HERO ]</span>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="wf-footer">
+      <div>
+        <p class="big">PARALLAX / WIREFRAME</p>
+        <p>Structural prototype for the Digital Interface Design final project. Not final styling. One real player, three open slots.</p>
+      </div>
+      <div>
+        <h3>Pages</h3>
+        <ul>
+          <li><a href="index.html">01 / Home</a></li>
+          <li><a href="works.html">02 / Works</a></li>
+          <li><a href="about.html">03 / About</a></li>
+          <li><a href="contact.html">04 / Contact</a></li>
+          <li><a href="case-study.html">05 / Case study</a></li>
+        </ul>
+      </div>
+      <div>
+        <h3>Status</h3>
+        <ul>
+          <li>Build 0.1 / wireframe</li>
+          <li>1 of 4 content slots filled</li>
+          <li><a href="../index.html">Open the final site ↗</a></li>
+        </ul>
+      </div>
+    </footer>
+    <div class="wf-bottom">
+      <span>PARALLAX / WIREFRAME / 2026</span>
+      <span>Low-fidelity structure — not the final site</span>
+      <a href="#top">Back to top ↑</a>
+    </div>
+  </div>
+
+  <div class="wf-toast" id="wf-toast" role="status" aria-live="polite"></div>
+  <script src="assets/wireframe.js" defer></script>
+</body>
+</html>

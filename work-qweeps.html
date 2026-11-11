@@ -1,0 +1,324 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>QWEEPS — Case Study — PARALLAX</title>
+  <meta name="description" content="QWEEPS case study: a live, interactive visual teaching prototype with synchronized narration, inspectable scenes, and contextual branches.">
+    <meta property="og:title" content="QWEEPS — Case Study — PARALLAX">
+  <meta property="og:description" content="Live interactive visual teaching: a QWEEPS case study with synchronized narration, inspectable scenes, and contextual branches.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/img/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#17131f">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/pixelify-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body>
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="noise" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html" aria-label="PARALLAX — home">
+        <span class="brand-star" aria-hidden="true">✦</span>
+        <span class="brand-word">PARALLAX</span>
+        <span class="brand-4p">4P</span>
+      </a>
+
+      <nav class="nav" id="nav" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="works.html" aria-current="page">Works</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a class="btn btn-primary btn-sm mobile-only" href="work-qweeps.html">Featured quest →</a>
+        <p class="nav-status">PARTY 1 OF 4 READY <span>BUILD 0.3</span></p>
+      </nav>
+
+      <div class="header-tools">
+        <button class="menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="nav" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ================= CASE HERO ================= -->
+    <section class="case-hero">
+      <div class="wrap">
+        <p class="eyebrow">Quest 01 / Complete / Case study</p>
+        <h1 class="page-title" aria-label="QWEEPS">QWEEPS<span class="accent" aria-hidden="true">.</span></h1>
+        <p class="case-sub">Live interactive visual teaching. A research prototype that turns a question or a source document into an inspectable visual lesson — not a slide deck, not a pre-rendered video, but a navigable explanation with synchronized narration.</p>
+
+        <div class="case-meta">
+          <div><span class="k">Role</span><span class="v"><b>Creator &amp; lead systems engineer</b></span></div>
+          <div><span class="k">Year</span><span class="v">2026</span></div>
+          <div><span class="k">Stack</span><span class="v">Python · TypeScript · React · ManimGL · SVG / GSAP</span></div>
+          <div><span class="k">Status</span><span class="v"><b>Open-source research prototype</b></span></div>
+        </div>
+
+        <div class="case-hero-media">
+          <div class="screen-media" style="border:0;box-shadow:none;">
+            <video id="case-video" autoplay muted loop playsinline preload="metadata" poster="assets/img/qweeps/lesson-sat.webp" aria-label="Animated QWEEPS lesson explaining why P equals NP would destroy digital trust and privacy">
+              <source src="assets/img/qweeps/lesson-loop.mp4" type="video/mp4">
+              <img src="assets/img/qweeps/lesson-sat.webp" alt="QWEEPS lesson screen showing a P versus NP diagram.">
+            </video>
+            <button class="screen-play" id="case-play" type="button" aria-label="Pause preview" style="position:absolute;right:8px;top:8px;z-index:3;">II</button>
+          </div>
+          <div class="cap"><span>QWEEPS / P VS NP / BEAT 17 OF 20</span><span>LIVE BROWSER PLAYBACK / 2026</span></div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= BRIEF ================= -->
+    <section class="case-section paper" id="brief">
+      <div class="wrap">
+        <div class="case-two-col">
+          <div class="case-block">
+            <p class="eyebrow" style="color:var(--orange-deep);">01 / The brief</p>
+            <h2>THE PROBLEM<br>WITH A VIDEO.</h2>
+            <p>Most generated lessons are static slides or pre-rendered video. They are slow to produce, hard to inspect, and impossible to branch. If a learner gets stuck on one idea, the lesson cannot open a door beside it.</p>
+            <p>QWEEPS asks a different question: what if the lesson itself were a live interface — one that can pause, explain an object, answer a question, and return the learner to exactly where they were?</p>
+          </div>
+          <div class="case-block">
+            <p class="eyebrow" style="color:var(--orange-deep);">The approach</p>
+            <h2>A LESSON IS<br>A SPACE.</h2>
+            <p>The system plans connected reasoning beats, chooses a presentation method for each beat, generates scene data, reviews actual browser-rendered frames, and plays the lesson live in the browser with synchronized speech.</p>
+            <ul>
+              <li>Hybrid SVG/GSAP stages and native ManimGL chapters.</li>
+              <li>A monotonic audio-driven clock for sub-second cue alignment.</li>
+              <li>Contextual Q&amp;A that branches into a focused mini-lesson.</li>
+              <li>Automated frame review before a lesson is released.</li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= BUILD ================= -->
+    <section class="case-section dark" id="build">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">02 / The build</p>
+            <h2 class="h2">FROM QUESTION<br>TO PLAYHEAD.</h2>
+          </div>
+          <p class="section-intro">Four moves, repeated for every lesson. The point is not to generate more content; it is to make the content inspectable.</p>
+        </div>
+
+        <div class="process-steps">
+          <article class="process-step">
+            <p class="n">01</p>
+            <h3>Plan beats</h3>
+            <p>Turn a topic or document into connected reasoning beats. Each beat has a job in the argument.</p>
+          </article>
+          <article class="process-step">
+            <p class="n">02</p>
+            <h3>Generate scenes</h3>
+            <p>Choose a presentation method per beat. Build SVG layouts, diagrams, and native math animation.</p>
+          </article>
+          <article class="process-step">
+            <p class="n">03</p>
+            <h3>Review frames</h3>
+            <p>Check actual rendered frames and layout contracts. Content review is not enough if the frame is broken.</p>
+          </article>
+          <article class="process-step">
+            <p class="n">04</p>
+            <h3>Play live</h3>
+            <p>Stream the lesson with synchronized narration. Pause, inspect, ask, branch, return.</p>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SYSTEM ================= -->
+    <section class="case-section paper" id="system">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow" style="color:var(--orange-deep);">03 / The system</p>
+            <h2 class="h2">ONE CLOCK.<br>MANY SCENES.</h2>
+          </div>
+          <p class="section-intro">The interface is the visible part. Under it, a pipeline ties planning, rendering, review, and playback to the same timeline.</p>
+        </div>
+
+        <div class="system-diagram" role="img" aria-label="System flow: input, planner, scene generator, frame review, live player, learner.">
+          <div class="system-node"><b>INPUT</b><span>Question or source document.</span></div>
+          <div class="system-arrow" aria-hidden="true">→</div>
+          <div class="system-node"><b>PLANNER</b><span>Connected beats, methods, and intent.</span></div>
+          <div class="system-arrow" aria-hidden="true">→</div>
+          <div class="system-node"><b>SCENE GEN</b><span>SVG, GSAP, ManimGL, narration.</span></div>
+          <div class="system-arrow" aria-hidden="true">→</div>
+          <div class="system-node"><b>REVIEW</b><span>Rendered frames and layout checks.</span></div>
+          <div class="system-arrow" aria-hidden="true">→</div>
+          <div class="system-node"><b>LIVE PLAYER</b><span>One clock, seekable timeline.</span></div>
+          <div class="system-arrow" aria-hidden="true">→</div>
+          <div class="system-node"><b>LEARNER</b><span>Pause, inspect, ask, branch.</span></div>
+        </div>
+
+        <div class="case-two-col" style="margin-top:36px;">
+          <div class="case-block">
+            <h2 style="font-size:clamp(1.5rem,2.5vw,2.2rem);">THE HARD PART IS NOT GENERATION.</h2>
+            <p>It is keeping the visuals, speech, and interaction on the same clock — and then proving that the rendered frame actually matches the plan. QWEEPS treats frame review as part of the build, not a final polish pass.</p>
+          </div>
+          <div class="case-block">
+            <h2 style="font-size:clamp(1.5rem,2.5vw,2.2rem);">THE INTERFACE STAYS SMALL.</h2>
+            <p>The player chrome is deliberately quiet: a timeline, captions, inspect controls, and a place to ask. The lesson should feel like a space to explore, not a dashboard to manage.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= INTERFACE ================= -->
+    <section class="case-section dark" id="interface">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">04 / The interface</p>
+            <h2 class="h2">THREE STATES<br>OF ONE LESSON.</h2>
+          </div>
+          <p class="section-intro">The lesson, the branch, and the quiz. Each screen is a different relationship between the learner and the same timeline.</p>
+        </div>
+
+        <div class="gallery-3">
+          <figure>
+            <div class="shot">
+              <img src="assets/img/qweeps/lesson-verifier.webp" alt="QWEEPS lesson screen explaining how a mathematical verifier checks an answer." width="1440" height="900" decoding="async">
+            </div>
+            <figcaption><b>01 / THE LESSON</b> — A step in the argument, with narration and a seekable timeline.</figcaption>
+          </figure>
+          <figure>
+            <div class="shot">
+              <img src="assets/img/qweeps/branch.webp" alt="QWEEPS branch mini-lesson with a comparison table explaining verifiers." width="1440" height="900" decoding="async">
+            </div>
+            <figcaption><b>02 / THE BRANCH</b> — A focused mini-lesson generated from a question, with a path back.</figcaption>
+          </figure>
+          <figure>
+            <div class="shot">
+              <img src="assets/img/qweeps/quiz.webp" alt="QWEEPS reinforcement quiz with a multiple-choice question and a correct answer." width="1440" height="900" decoding="async">
+            </div>
+            <figcaption><b>03 / THE QUIZ</b> — Retrieval practice with immediate explanations and recall loops.</figcaption>
+          </figure>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= RESULT ================= -->
+    <section class="case-section paper" id="result">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow" style="color:var(--orange-deep);">05 / The result</p>
+            <h2 class="h2">WHAT EXISTS<br>RIGHT NOW.</h2>
+          </div>
+          <p class="section-intro">Not a promise. A set of bundled lessons, a quiz, a technical report, and a public repository that can be inspected.</p>
+        </div>
+
+        <div class="result-stats">
+          <div class="result-stat"><p class="n">20</p><span class="l">beats in the P vs NP hybrid lesson</span></div>
+          <div class="result-stat"><p class="n">382<span style="font-size:.45em;">s</span></p><span class="l">of live, seekable lesson time</span></div>
+          <div class="result-stat"><p class="n">03</p><span class="l">bundled offline-playable lessons</span></div>
+          <div class="result-stat"><p class="n">20</p><span class="l">mastery quiz cards with recall loops</span></div>
+        </div>
+
+        <div class="case-links">
+          <a class="btn btn-primary" href="https://github.com/acceptance27/qweeps" target="_blank" rel="noopener">VIEW REPOSITORY ↗</a>
+          <a class="btn btn-ghost" style="color:var(--ink);border-color:var(--ink);" href="https://doi.org/10.5281/zenodo.23791785" target="_blank" rel="noopener">ZENODO DOI ↗</a>
+          <a class="btn btn-ghost" style="color:var(--ink);border-color:var(--ink);" href="assets/docs/qweeps-technical-report.pdf" target="_blank" rel="noopener">TECHNICAL REPORT (PDF) ↗</a>
+          <a class="btn btn-ghost" style="color:var(--ink);border-color:var(--ink);" href="https://orcid.org/0009-0003-2325-7968" target="_blank" rel="noopener">ORCID ↗</a>
+        </div>
+
+        <p class="micro" style="margin-top:18px;max-width:80ch;line-height:1.8;">SCOPE NOTE: QWEEPS IS A SOFTWARE AND DESIGN PROTOTYPE, NOT A CONTROLLED LEARNING-OUTCOME STUDY. AUTOMATED REVIEW CAN MISS FACTUAL, VISUAL, OR TEACHING ERRORS. THE REPOSITORY AND REPORT DOCUMENT WHAT WAS ACTUALLY BUILT.</p>
+      </div>
+    </section>
+
+    <!-- ================= REFLECTION ================= -->
+    <section class="case-section dark" id="reflection">
+      <div class="wrap">
+        <div class="case-two-col">
+          <div>
+            <p class="eyebrow">06 / Reflection</p>
+            <blockquote class="case-quote" style="border-color:var(--line);background:var(--panel);color:var(--cream);">
+              “I build interactive systems at the intersection of AI, real-time graphics, and audio-visual synchronization.”
+              <span style="display:block;margin-top:14px;font-family:var(--font-pixel-label);font-size:7px;color:var(--gold);letter-spacing:.06em;">RAYVEN PAHIGNALO / PROJECT NOTES</span>
+            </blockquote>
+          </div>
+          <div class="case-block">
+            <h2>WHAT THE BUILD<br>TAUGHT ME.</h2>
+            <p>The hard part is not making a demo that looks alive. It is making the aliveness legible: one clock, one timeline, one inspectable frame at a time. A generative interface earns trust when the user can stop it, ask a question, and see where the answer came from.</p>
+            <p>That is also the argument for this portfolio. Show the work, show the process, and leave the empty slots visible. The interface should not pretend to be more finished than the group is.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= NEXT ================= -->
+    <section class="section section-paper">
+      <div class="wrap">
+        <div class="next-quest">
+          <div>
+            <p class="eyebrow" style="color:var(--orange-deep);">Next quest / slot 02</p>
+            <h3>THIS PAGE COULD<br>HAVE A SIBLING.</h3>
+            <p>The case-study layout is ready for the next player's project. The slot is open until the work arrives.</p>
+          </div>
+          <div style="display:flex;flex-wrap:wrap;gap:8px;">
+            <button class="btn btn-primary" type="button" data-slot="02" data-role="Research &amp; Writing" data-copy-brief>COPY SUBMISSION BRIEF</button>
+            <a class="btn btn-ghost" style="color:var(--ink);border-color:var(--ink);" href="works.html">BACK TO QUEST LOG →</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <p class="footer-brand"><span class="brand-star" aria-hidden="true">✦</span> PARALLAX</p>
+          <p class="footer-blurb">A four-player interface studio. Built as a working wireframe for a Digital Interface Design final project. Three player slots are intentionally open.</p>
+        </div>
+        <div class="footer-col">
+          <h3>Index</h3>
+          <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="works.html">Quest log</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Mailbox</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h3>Save file</h3>
+          <div class="footer-status">
+            <div class="line"><span>Party</span><b>1 / 4</b></div>
+            <div class="line"><span>Quests</span><b>1 / 4</b></div>
+            <div class="line"><span>Build</span><b>0.3</b></div>
+            <div class="line"><span>Status</span><b>WIREFRAME</b></div>
+          </div>
+          <p class="footer-clock" data-clock>--:--<small>Manila / GMT+8</small></p>
+        </div>
+        <div class="footer-col">
+          <h3>Elsewhere</h3>
+          <div class="footer-links">
+            <a href="https://github.com/acceptance27/qweeps" target="_blank" rel="noopener">GitHub / QWEEPS ↗</a>
+            <a href="https://doi.org/10.5281/zenodo.23791785" target="_blank" rel="noopener">Zenodo / DOI ↗</a>
+            <a href="https://orcid.org/0009-0003-2325-7968" target="_blank" rel="noopener">ORCID ↗</a>
+            <a href="#" data-copy="hello@parallax.studio">hello@parallax.studio ⧉</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-mark" aria-hidden="true">PARALLAX</div>
+      <div class="footer-bottom">
+        <span>© 2026 PARALLAX / Digital Interface Design / BSIT 4</span>
+        <span>Wireframe — 3 player slots open</span>
+        <a href="#main">Back to top ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="assets/js/site.js" defer></script>
+</body>
+</html>

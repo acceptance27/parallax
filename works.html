@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Quest Log — PARALLAX</title>
+  <meta name="description" content="The PARALLAX quest log: one completed interface project and three open player slots waiting for the rest of the group.">
+    <meta property="og:title" content="Quest Log — PARALLAX">
+  <meta property="og:description" content="One completed quest and three open slots: the PARALLAX group portfolio as a working wireframe.">
+  <meta property="og:type" content="website">
+  <meta property="og:image" content="assets/img/og.png">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="theme-color" content="#f4ecd9">
+  <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
+  <link rel="preload" href="assets/fonts/pixelify-400.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/style.css">
+  <script>document.documentElement.classList.add('js');</script>
+</head>
+<body class="paper">
+  <a class="skip-link" href="#main">Skip to content</a>
+  <div class="noise" aria-hidden="true"></div>
+
+  <header class="site-header">
+    <div class="header-inner">
+      <a class="brand" href="index.html" aria-label="PARALLAX — home">
+        <span class="brand-star" aria-hidden="true">✦</span>
+        <span class="brand-word">PARALLAX</span>
+        <span class="brand-4p">4P</span>
+      </a>
+
+      <nav class="nav" id="nav" aria-label="Primary">
+        <a href="index.html">Home</a>
+        <a href="works.html" aria-current="page">Works</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+        <a class="btn btn-primary btn-sm mobile-only" href="work-qweeps.html">Featured quest →</a>
+        <p class="nav-status">PARTY 1 OF 4 READY <span>BUILD 0.3</span></p>
+      </nav>
+
+      <div class="header-tools">
+        <button class="menu-toggle" id="menu-toggle" type="button" aria-expanded="false" aria-controls="nav" aria-label="Open menu">
+          <span></span><span></span><span></span>
+        </button>
+      </div>
+    </div>
+  </header>
+
+  <main id="main">
+    <!-- ================= WORK LOG HERO ================= -->
+    <section class="page-hero">
+      <div class="wrap">
+        <div class="page-hero-grid">
+          <div>
+            <p class="eyebrow">Quest log / four save files</p>
+            <h1 class="page-title" aria-label="Quest log">QUEST<span class="accent" aria-hidden="true">_</span>LOG.</h1>
+            <p class="page-sub">One completed quest. Three open slots. This is not a finished gallery — it is the exact shape of the group right now, with room for the work that has not arrived yet.</p>
+          </div>
+
+          <aside class="status-panel" aria-label="Quest log status: one of four quests complete">
+            <div class="top"><span>SAVE FILE / STATUS</span><span>BUILD 0.3</span></div>
+            <div class="big">01<span> / 04</span></div>
+            <div class="bar" aria-hidden="true"><span class="on"></span><span></span><span></span><span></span></div>
+            <p>1 quest complete. 3 slots reserved for players 02–04. No borrowed work.</p>
+          </aside>
+        </div>
+      </div>
+    </section>
+
+    <section class="section" style="padding-top: 30px;">
+      <div class="wrap">
+        <div class="works-toolbar">
+          <div class="filter-bar" role="group" aria-label="Filter quest log">
+            <button class="filter is-active" type="button" data-filter="all" aria-pressed="true">All <span>04</span></button>
+            <button class="filter" type="button" data-filter="complete" aria-pressed="false">Complete <span>01</span></button>
+            <button class="filter" type="button" data-filter="locked" aria-pressed="false">Locked <span>03</span></button>
+          </div>
+          <p class="micro">TIP: THE LOCKED CARDS CONTAIN THE SUBMISSION BRIEF.</p>
+        </div>
+
+        <div class="works-grid">
+          <a class="work-card reveal" href="work-qweeps.html" data-status="complete">
+            <div class="work-top">
+              <span class="left"><span>SAVE 01</span><span>·</span><span>RAYVEN</span></span>
+              <span class="chip chip-complete">COMPLETE</span>
+            </div>
+            <div class="work-media">
+              <img src="assets/img/qweeps/lesson-sat.webp" alt="QWEEPS lesson screen explaining why P equals NP would destroy digital trust." width="1440" height="900" decoding="async">
+              <span class="media-tag">FEATURED QUEST</span>
+            </div>
+            <div class="work-body">
+              <h2 class="work-title">QWEEPS</h2>
+              <p class="work-sub">Live interactive visual teaching</p>
+              <p class="work-desc">A research prototype that turns a question or a source document into a live visual lesson with synchronized narration, inspectable scenes, and contextual branches.</p>
+              <div class="tag-row">
+                <span class="tag">AI systems</span><span class="tag">React</span><span class="tag">ManimGL</span><span class="tag">Audio sync</span>
+              </div>
+              <div class="work-foot"><span><b>2026</b> / INTERFACE + SYSTEMS</span><span>OPEN CASE STUDY →</span></div>
+            </div>
+          </a>
+
+          <a class="work-card is-locked reveal" href="#slots" data-slot="02" data-role="Research &amp; Writing" data-status="locked">
+            <div class="work-top">
+              <span class="left"><span>SAVE 02</span><span>·</span><span>OPEN SLOT</span></span>
+              <span class="chip chip-locked">LOCKED</span>
+            </div>
+            <div class="work-media">
+              <span class="ghost-num" aria-hidden="true">02</span>
+              <span class="lock-chip">AWAITING DATA</span>
+            </div>
+            <div class="work-body">
+              <h2 class="work-title">PLAYER 02</h2>
+              <p class="work-sub">Research &amp; writing / TBA</p>
+              <p class="work-desc">A space for fieldwork, interviews, documentation, or a written project that gives the interface a point of view.</p>
+              <p class="locked-note">This card is a wireframe placeholder.</p>
+              <div class="work-foot"><span><b>SLOT</b> RESERVED</span><span>OPEN SUBMISSION BRIEF →</span></div>
+            </div>
+          </a>
+
+          <a class="work-card is-locked reveal" href="#slots" data-slot="03" data-role="Visual &amp; Motion" data-status="locked">
+            <div class="work-top">
+              <span class="left"><span>SAVE 03</span><span>·</span><span>OPEN SLOT</span></span>
+              <span class="chip chip-locked">LOCKED</span>
+            </div>
+            <div class="work-media">
+              <span class="ghost-num" aria-hidden="true">03</span>
+              <span class="lock-chip">AWAITING DATA</span>
+            </div>
+            <div class="work-body">
+              <h2 class="work-title">PLAYER 03</h2>
+              <p class="work-sub">Visual &amp; motion / TBA</p>
+              <p class="work-desc">A space for stills, edits, motion studies, or a visual system. Three images and a clear process are enough.</p>
+              <p class="locked-note">This card is a wireframe placeholder.</p>
+              <div class="work-foot"><span><b>SLOT</b> RESERVED</span><span>OPEN SUBMISSION BRIEF →</span></div>
+            </div>
+          </a>
+
+          <a class="work-card is-locked reveal" href="#slots" data-slot="04" data-role="Editorial &amp; Presentation" data-status="locked">
+            <div class="work-top">
+              <span class="left"><span>SAVE 04</span><span>·</span><span>OPEN SLOT</span></span>
+              <span class="chip chip-locked">LOCKED</span>
+            </div>
+            <div class="work-media">
+              <span class="ghost-num" aria-hidden="true">04</span>
+              <span class="lock-chip">AWAITING DATA</span>
+            </div>
+            <div class="work-body">
+              <h2 class="work-title">PLAYER 04</h2>
+              <p class="work-sub">Editorial &amp; presentation / TBA</p>
+              <p class="work-desc">A space for the narrative layer: the deck, the script, the curatorial idea, or the presentation that connects the four practices.</p>
+              <p class="locked-note">This card is a wireframe placeholder.</p>
+              <div class="work-foot"><span><b>SLOT</b> RESERVED</span><span>OPEN SUBMISSION BRIEF →</span></div>
+            </div>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ================= SUBMISSION ================= -->
+    <section class="section-paper section" id="slots">
+      <div class="wrap">
+        <div class="section-head">
+          <div>
+            <p class="eyebrow">Open call / players 02–04</p>
+            <h2 class="h2">THE SLOT IS YOURS.<br>FILL IT.</h2>
+          </div>
+          <p class="section-intro">The cards are sized and waiting. To replace one, send a small, specific packet — not a folder of everything you have ever made.</p>
+        </div>
+
+        <div class="submission-panel" style="background:#f8f1df;border-color:var(--ink);color:var(--ink);box-shadow:6px 6px 0 var(--ink);">
+          <div>
+            <p class="eyebrow" style="color:var(--orange-deep);">Submission packet</p>
+            <h3 style="color:var(--ink);">THREE IMAGES. ONE STORY.</h3>
+            <ol class="steps-mini" style="color:var(--muted-dark);">
+              <li><b>01</b><span>Three images, at least 1600px wide, plus one portrait or avatar.</span></li>
+              <li><b>02</b><span>A 120-word bio, a 150-word project statement, and your role.</span></li>
+              <li><b>03</b><span>Tools, year, and links. We will lay it out; you keep the voice.</span></li>
+            </ol>
+          </div>
+          <div class="submission-actions">
+            <button class="btn btn-primary" type="button" data-slot="00" data-role="All open slots" data-copy-brief>COPY SUBMISSION BRIEF</button>
+            <a class="btn btn-ghost" style="color:var(--ink);border-color:var(--ink);" href="contact.html">ASK A QUESTION →</a>
+          </div>
+        </div>
+
+        <div class="archive-strip">
+          <a class="archive-item" href="work-qweeps.html">
+            <img src="assets/img/qweeps/lesson-verifier.webp" alt="QWEEPS verifier lesson screen." width="1440" height="900">
+            <span><b>FRAGMENT 01</b> / THE VERIFIER</span>
+          </a>
+          <a class="archive-item" href="work-qweeps.html#interface">
+            <img src="assets/img/qweeps/branch.webp" alt="QWEEPS branch mini-lesson comparison table." width="1440" height="900">
+            <span><b>FRAGMENT 02</b> / THE BRANCH</span>
+          </a>
+          <a class="archive-item" href="work-qweeps.html#interface">
+            <img src="assets/img/qweeps/quiz.webp" alt="QWEEPS reinforcement quiz screen." width="1440" height="900">
+            <span><b>FRAGMENT 03</b> / THE QUIZ</span>
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <section class="contact-band">
+      <div class="wrap">
+        <div class="contact-band-inner">
+          <div>
+            <p class="eyebrow">Need a player?</p>
+            <h2>JOIN THE PARTY.</h2>
+            <p>This log is built for four. If you are one of the missing players, the brief is ready and the slot has your name on it.</p>
+          </div>
+          <a class="btn btn-ink" href="contact.html">OPEN MAILBOX <span class="arrow" aria-hidden="true">→</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <div class="wrap">
+      <div class="footer-grid">
+        <div class="footer-col">
+          <p class="footer-brand"><span class="brand-star" aria-hidden="true">✦</span> PARALLAX</p>
+          <p class="footer-blurb">A four-player interface studio. Built as a working wireframe for a Digital Interface Design final project. Three player slots are intentionally open.</p>
+        </div>
+        <div class="footer-col">
+          <h3>Index</h3>
+          <div class="footer-links">
+            <a href="index.html">Home</a>
+            <a href="works.html">Quest log</a>
+            <a href="about.html">About</a>
+            <a href="contact.html">Mailbox</a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h3>Save file</h3>
+          <div class="footer-status">
+            <div class="line"><span>Party</span><b>1 / 4</b></div>
+            <div class="line"><span>Quests</span><b>1 / 4</b></div>
+            <div class="line"><span>Build</span><b>0.3</b></div>
+            <div class="line"><span>Status</span><b>WIREFRAME</b></div>
+          </div>
+          <p class="footer-clock" data-clock>--:--<small>Manila / GMT+8</small></p>
+        </div>
+        <div class="footer-col">
+          <h3>Elsewhere</h3>
+          <div class="footer-links">
+            <a href="https://github.com/acceptance27/qweeps" target="_blank" rel="noopener">GitHub / QWEEPS ↗</a>
+            <a href="https://doi.org/10.5281/zenodo.23791785" target="_blank" rel="noopener">Zenodo / DOI ↗</a>
+            <a href="https://orcid.org/0009-0003-2325-7968" target="_blank" rel="noopener">ORCID ↗</a>
+            <a href="#" data-copy="hello@parallax.studio">hello@parallax.studio ⧉</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer-mark" aria-hidden="true">PARALLAX</div>
+      <div class="footer-bottom">
+        <span>© 2026 PARALLAX / Digital Interface Design / BSIT 4</span>
+        <span>Wireframe — 3 player slots open</span>
+        <a href="#main">Back to top ↑</a>
+      </div>
+    </div>
+  </footer>
+
+  <dialog class="pixel-dialog" id="slot-dialog" aria-labelledby="slot-dialog-title">
+    <div class="dialog-bar">
+      <span>SLOT <b id="dialog-slot">02</b> / OPEN</span>
+      <button class="dialog-close" id="dialog-close" type="button" aria-label="Close dialog">×</button>
+    </div>
+    <div class="dialog-body">
+      <p class="eyebrow" id="dialog-role">Research &amp; Writing / TBA</p>
+      <h2 id="slot-dialog-title">THIS SLOT IS<br>STILL LOADING.</h2>
+      <p>This is a working wireframe. The card is sized, the layout is ready, and the placeholder is intentional. Fill it with a teammate's profile and project instead of inventing one.</p>
+      <ul>
+        <li>Three images, at least 1600px wide, plus one portrait or avatar.</li>
+        <li>A 120-word bio and a 150-word project statement.</li>
+        <li>Role, tools, year, and links. Keep the voice specific.</li>
+      </ul>
+      <div class="dialog-actions">
+        <button class="btn btn-primary" id="dialog-copy" type="button">COPY SUBMISSION BRIEF</button>
+        <a class="btn btn-ghost" href="contact.html">PING THE STUDIO →</a>
+      </div>
+      <p class="dialog-status" id="dialog-status" role="status"></p>
+    </div>
+  </dialog>
+
+  <div class="toast" id="toast" role="status" aria-live="polite"></div>
+  <script src="assets/js/site.js" defer></script>
+</body>
+</html>
