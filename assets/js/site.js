@@ -10,7 +10,7 @@
   const reduceMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
   /* ------------------------------------------------------------------
-     1. Mobile navigation
+1. Mobile navigation
      ------------------------------------------------------------------ */
   const nav = $('#nav');
   const menuToggle = $('#menu-toggle');
@@ -46,7 +46,7 @@
   }
 
   /* ------------------------------------------------------------------
-     3. Pixel starfield
+3. Pixel starfield
      ------------------------------------------------------------------ */
   const starCanvas = $('#starfield');
   if (starCanvas) {
@@ -128,7 +128,7 @@
   }
 
   /* ------------------------------------------------------------------
-     4. Video preview controls
+4. Video preview controls
      ------------------------------------------------------------------ */
   function setupVideo(buttonId, videoId) {
     const button = $('#' + buttonId);
@@ -165,7 +165,7 @@
   setupVideo('case-play', 'case-video');
 
   /* ------------------------------------------------------------------
-     5. Scroll reveal
+5. Scroll reveal
      ------------------------------------------------------------------ */
   const revealEls = $$('.reveal');
   if ('IntersectionObserver' in window && !reduceMotion) {
@@ -183,7 +183,7 @@
   }
 
   /* ------------------------------------------------------------------
-     6. Toast + clipboard
+6. Toast + clipboard
      ------------------------------------------------------------------ */
   const toast = $('#toast');
   let toastTimer = null;
@@ -252,7 +252,7 @@ Return this to the group lead. The layout will handle the rest.
   });
 
   /* ------------------------------------------------------------------
-     7. Slot dialog
+7. Slot dialog
      ------------------------------------------------------------------ */
   const slotDialog = $('#slot-dialog');
   const dialogSlot = $('#dialog-slot');
@@ -321,7 +321,7 @@ Return this to the group lead. The layout will handle the rest.
   }
 
   /* ------------------------------------------------------------------
-     8. Works filters
+8. Works filters
      ------------------------------------------------------------------ */
   const filters = $$('.filter');
   const workCards = $$('.work-card');
@@ -344,7 +344,7 @@ Return this to the group lead. The layout will handle the rest.
   }
 
   /* ------------------------------------------------------------------
-     9. Local clock (Asia/Manila)
+9. Local clock (Asia/Manila)
      ------------------------------------------------------------------ */
   function updateClock() {
     const clocks = $$('[data-clock]');
@@ -373,7 +373,7 @@ Return this to the group lead. The layout will handle the rest.
   window.setInterval(updateClock, 30000);
 
   /* ------------------------------------------------------------------
-     10. Contact form (prototype)
+10. Contact form (prototype)
      ------------------------------------------------------------------ */
   const contactForm = $('#contact-form');
   if (contactForm) {
@@ -412,7 +412,12 @@ Return this to the group lead. The layout will handle the rest.
         return;
       }
 
-      const composed = `FROM: ${name} <${email}>\nSUBJECT: ${subject}\n\n${message}\n\n— Sent from the PARALLAX mailbox.`;
+      const composed = `FROM: ${name} <${email}>
+SUBJECT: ${subject}
+
+${message}
+
+— Sent from the PARALLAX mailbox.`;
       if (messagePreview) messagePreview.textContent = composed;
       if (mailto) {
         mailto.href = `mailto:${recipient}?subject=${encodeURIComponent('[PARALLAX] ' + subject)}&body=${encodeURIComponent(composed)}`;
@@ -447,54 +452,106 @@ Return this to the group lead. The layout will handle the rest.
   }
 
   /* ------------------------------------------------------------------
-     11. Artwork lightbox
+11. Small utility: current year in footer if marked
      ------------------------------------------------------------------ */
-  const artworkDialog = $('#artwork-dialog');
-  if (artworkDialog) {
-    const lightboxImg = $('#lightbox-img');
-    const lightboxTitle = $('#lightbox-title');
-    const lightboxCaption = $('#lightbox-caption');
-    const lightboxClose = $('#lightbox-close');
-    let lightboxTrigger = null;
+  $$('[data-year]').forEach((el) => { el.textContent = new Date().getFullYear(); });
 
-    const closeLightbox = () => {
-      if (artworkDialog.open) artworkDialog.close();
-    };
+  /* ------------------------------------------------------------------
+12. Gallery Filter & Lightbox (Allen Dean Sampang Exhibition)
+     ------------------------------------------------------------------ */
+  const artFilters = $$('[data-art-filter]');
+  const artCards = $$('.art-card');
 
-    $$('[data-lightbox]').forEach((trigger) => {
-      trigger.addEventListener('click', () => {
-        const src = trigger.getAttribute('data-src') || '';
-        const title = trigger.getAttribute('data-title') || 'ARTWORK';
-        const caption = trigger.getAttribute('data-caption') || '';
-        const img = $('img', trigger);
-        if (lightboxImg) {
-          lightboxImg.src = src;
-          lightboxImg.alt = img ? img.alt : title;
-        }
-        if (lightboxTitle) lightboxTitle.textContent = title;
-        if (lightboxCaption) lightboxCaption.textContent = caption;
-        lightboxTrigger = trigger;
-        if (typeof artworkDialog.showModal === 'function') {
-          if (!artworkDialog.open) artworkDialog.showModal();
-        } else {
-          artworkDialog.setAttribute('open', '');
-        }
-        document.body.classList.add('no-scroll');
+  if (artFilters.length && artCards.length) {
+    artFilters.forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const category = btn.getAttribute('data-art-filter');
+        artFilters.forEach((other) => {
+          const active = other === btn;
+          other.classList.toggle('is-active', active);
+          other.setAttribute('aria-pressed', String(active));
+        });
+        artCards.forEach((card) => {
+          const cardCat = card.getAttribute('data-category');
+          const cardOrient = card.getAttribute('data-orientation');
+          const show =
+            category === 'all' ||
+            cardCat === category ||
+            cardOrient === category;
+          card.hidden = !show;
+          if (show) card.classList.add('is-in');
+        });
       });
-    });
-
-    if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
-    artworkDialog.addEventListener('click', (event) => {
-      if (event.target === artworkDialog) closeLightbox();
-    });
-    artworkDialog.addEventListener('close', () => {
-      document.body.classList.remove('no-scroll');
-      if (lightboxTrigger) lightboxTrigger.focus();
     });
   }
 
-  /* ------------------------------------------------------------------
-     12. Small utility: current year in footer if marked
-     ------------------------------------------------------------------ */
-  $$('[data-year]').forEach((el) => { el.textContent = new Date().getFullYear(); });
+  const lightbox = $('#art-lightbox');
+  if (lightbox && artCards.length) {
+    const lbImg = $('#lb-img');
+    const lbNum = $('#lb-num');
+    const lbTitle = $('#lb-title');
+    const lbDesc = $('#lb-desc');
+    const lbOrientation = $('#lb-orientation');
+    const lbClose = $('#lb-close');
+    const lbPrev = $('#lb-prev');
+    const lbNext = $('#lb-next');
+    let currentIdx = 0;
+
+    function visibleCards() {
+      return artCards.filter((c) => !c.hidden);
+    }
+
+    function renderLightbox(index) {
+      const list = visibleCards();
+      if (!list.length) return;
+      currentIdx = (index + list.length) % list.length;
+      const card = list[currentIdx];
+      const img = $('img', card);
+      lbImg.src = img.getAttribute('src');
+      lbImg.alt = img.getAttribute('alt') || '';
+      lbNum.textContent = card.getAttribute('data-plate') || `PLATE ${currentIdx + 1}`;
+      lbTitle.textContent = card.getAttribute('data-title') || '';
+      lbDesc.textContent = card.getAttribute('data-desc') || '';
+      lbOrientation.textContent = (card.getAttribute('data-orientation') || '').toUpperCase();
+    }
+
+    artCards.forEach((card) => {
+      const openCard = () => {
+        const list = visibleCards();
+        const idx = list.indexOf(card);
+        renderLightbox(idx >= 0 ? idx : 0);
+        if (typeof lightbox.showModal === 'function') {
+          if (!lightbox.open) lightbox.showModal();
+        } else {
+          lightbox.setAttribute('open', '');
+        }
+        document.body.classList.add('no-scroll');
+      };
+
+      card.addEventListener('click', openCard);
+      card.addEventListener('keydown', (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+          e.preventDefault();
+          openCard();
+        }
+      });
+    });
+
+    if (lbPrev) lbPrev.addEventListener('click', () => renderLightbox(currentIdx - 1));
+    if (lbNext) lbNext.addEventListener('click', () => renderLightbox(currentIdx + 1));
+    if (lbClose) lbClose.addEventListener('click', () => lightbox.close());
+
+    lightbox.addEventListener('click', (e) => {
+      if (e.target === lightbox) lightbox.close();
+    });
+
+    lightbox.addEventListener('keydown', (e) => {
+      if (e.key === 'ArrowLeft') renderLightbox(currentIdx - 1);
+      if (e.key === 'ArrowRight') renderLightbox(currentIdx + 1);
+    });
+
+    lightbox.addEventListener('close', () => {
+      document.body.classList.remove('no-scroll');
+    });
+  }
 })();

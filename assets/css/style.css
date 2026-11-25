@@ -1462,7 +1462,6 @@ article[id] { scroll-margin-top: calc(var(--header-h) + 16px); }
 .work-media .media-tag {
   position: absolute;
   left: 8px; bottom: 8px;
-  z-index: 2;
   padding: 3px 5px;
   background: var(--gold);
   border: 1px solid var(--ink);
@@ -1471,22 +1470,6 @@ article[id] { scroll-margin-top: calc(var(--header-h) + 16px); }
   font-size: 6px;
   line-height: 1.4;
   text-transform: uppercase;
-}
-.work-media-triptych {
-  display: grid;
-  grid-template-columns: 0.9fr 1fr 1.1fr;
-  gap: 2px;
-  background: var(--ink);
-}
-.work-media-triptych img {
-  width: 100%;
-  height: 100%;
-  object-fit: cover;
-  object-position: center;
-  background: var(--paper-2);
-}
-.work-media-triptych img:nth-child(3) {
-  object-position: 44% center;
 }
 .work-body {
   display: flex;
@@ -2112,118 +2095,6 @@ article[id] { scroll-margin-top: calc(var(--header-h) + 16px); }
 }
 .gallery-3 figcaption b { color: var(--cream); font-weight: 400; }
 
-/* ---------- Artwork plates & lightbox ---------- */
-.artwork-plates {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 24px;
-  align-items: start;
-}
-.artwork-plate {
-  display: flex;
-  flex-direction: column;
-  border: 2px solid var(--ink);
-  background: #f8f1df;
-  box-shadow: 5px 5px 0 var(--ink);
-}
-.artwork-plate-wide {
-  grid-column: 1 / -1;
-}
-.artwork-frame {
-  position: relative;
-  display: grid;
-  place-items: center;
-  width: 100%;
-  padding: 18px;
-  border: 0;
-  border-bottom: 2px solid var(--ink);
-  background: var(--night-2);
-  cursor: zoom-in;
-  overflow: hidden;
-  transition: background 0.15s ease;
-}
-.artwork-frame:hover {
-  background: var(--panel);
-}
-.artwork-frame img {
-  width: auto;
-  max-width: 100%;
-  max-height: 540px;
-  height: auto;
-  border: 2px solid var(--cream);
-  box-shadow: 4px 4px 0 var(--shadow);
-  transition: transform 0.25s ease;
-}
-.artwork-plate-wide .artwork-frame img {
-  max-height: 680px;
-}
-.artwork-frame:hover img {
-  transform: scale(1.015);
-}
-.artwork-zoom {
-  position: absolute;
-  right: 10px;
-  bottom: 10px;
-  padding: 3px 6px;
-  border: 1px solid var(--ink);
-  background: var(--gold);
-  color: var(--ink);
-  font-family: var(--font-pixel-label);
-  font-size: 6px;
-  line-height: 1.4;
-  text-transform: uppercase;
-}
-.artwork-caption {
-  padding: 16px;
-}
-.artwork-cap-top {
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 10px;
-  margin-bottom: 8px;
-}
-.artwork-num {
-  font-family: var(--font-pixel);
-  font-size: 1.4rem;
-  line-height: 0.95;
-  text-transform: uppercase;
-  color: var(--ink);
-}
-.artwork-caption p {
-  margin: 0;
-  font-size: 11px;
-  line-height: 1.7;
-  color: #4c4234;
-}
-.artwork-dialog {
-  width: min(980px, 94vw);
-}
-.artwork-dialog-body {
-  padding: 16px;
-  display: grid;
-  justify-items: center;
-  gap: 12px;
-  background: var(--night-2);
-}
-.artwork-dialog-body img {
-  max-width: 100%;
-  max-height: 76vh;
-  width: auto;
-  height: auto;
-  border: 2px solid var(--cream);
-  box-shadow: 4px 4px 0 var(--shadow);
-}
-.artwork-dialog-body p {
-  margin: 0;
-  font-family: var(--font-pixel-label);
-  font-size: 7px;
-  line-height: 1.6;
-  text-transform: uppercase;
-  text-align: center;
-  color: var(--muted);
-}
-
 .result-stats {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
@@ -2512,8 +2383,6 @@ article[id] { scroll-margin-top: calc(var(--header-h) + 16px); }
   .contact-grid { grid-template-columns: 1fr; }
   .case-two-col { grid-template-columns: 1fr; }
   .gallery-3 { grid-template-columns: 1fr 1fr; }
-  .artwork-plates { grid-template-columns: 1fr; }
-  .artwork-plate-wide { grid-column: auto; }
   .result-stats { grid-template-columns: repeat(2, 1fr); }
   .locked-grid { grid-template-columns: 1fr 1fr; }
   .footer-grid { grid-template-columns: 1fr 1fr; }
@@ -2620,4 +2489,221 @@ article[id] { scroll-margin-top: calc(var(--header-h) + 16px); }
   .js .reveal { opacity: 1; transform: none; }
   .hero-scroll .down { animation: none; }
   .press-start { animation: none; }
+}
+
+/* ---------- Gallery Masonry & Artwork Framing (Allen Dean Sampang) ---------- */
+.gallery-masonry {
+  column-count: 3;
+  column-gap: 18px;
+  margin-top: 26px;
+}
+
+.art-card {
+  break-inside: avoid;
+  page-break-inside: avoid;
+  margin-bottom: 18px;
+  border: 2px solid var(--cream);
+  background: var(--panel);
+  box-shadow: 5px 5px 0 var(--shadow);
+  transition: transform 0.16s ease, border-color 0.16s ease, box-shadow 0.16s ease;
+  cursor: pointer;
+}
+
+.case-section.paper .art-card {
+  border-color: var(--ink);
+  background: #f8f1df;
+  box-shadow: 5px 5px 0 var(--ink);
+}
+
+.art-card:hover,
+.art-card:focus-visible {
+  transform: translate(-2px, -2px);
+  border-color: var(--gold);
+  box-shadow: 7px 7px 0 var(--shadow);
+}
+
+.case-section.paper .art-card:hover,
+.case-section.paper .art-card:focus-visible {
+  border-color: var(--orange-deep);
+  box-shadow: 7px 7px 0 var(--ink);
+}
+
+.art-frame {
+  position: relative;
+  padding: 14px;
+  background: #f6efe0;
+  border-bottom: 2px solid var(--panel-3);
+  display: grid;
+  place-items: center;
+}
+
+.case-section.paper .art-frame {
+  background: #efe5cf;
+  border-bottom-color: var(--ink);
+}
+
+.art-frame img {
+  width: 100%;
+  height: auto;
+  display: block;
+  border: 1px solid rgba(21, 16, 25, 0.25);
+  box-shadow: 2px 2px 6px rgba(11, 8, 16, 0.14);
+}
+
+.art-badge {
+  position: absolute;
+  top: 8px;
+  right: 8px;
+  padding: 2px 5px;
+  background: var(--night-2);
+  border: 1px solid var(--line-strong);
+  color: var(--gold);
+  font-family: var(--font-pixel-label);
+  font-size: 6px;
+  line-height: 1.4;
+  text-transform: uppercase;
+  opacity: 0.9;
+}
+
+.art-meta {
+  padding: 10px 12px;
+}
+
+.art-meta-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+  font-family: var(--font-pixel-label);
+  font-size: 6.5px;
+  line-height: 1.4;
+  text-transform: uppercase;
+  color: var(--gold);
+}
+
+.case-section.paper .art-meta-top {
+  color: var(--orange-deep);
+}
+
+.art-title {
+  margin: 4px 0 3px;
+  font-family: var(--font-pixel);
+  font-size: 1.25rem;
+  line-height: 0.95;
+  text-transform: uppercase;
+  color: var(--cream);
+}
+
+.case-section.paper .art-title {
+  color: var(--ink);
+}
+
+.art-note {
+  margin: 0;
+  font-size: 10px;
+  line-height: 1.55;
+  color: var(--muted);
+}
+
+.case-section.paper .art-note {
+  color: var(--muted-dark);
+}
+
+.art-filter-bar {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 18px;
+}
+
+.art-card[hidden] {
+  display: none;
+}
+
+/* Lightbox dialog for inspecting high-res drawings */
+.art-lightbox {
+  width: min(920px, 94vw);
+  max-height: 92vh;
+  padding: 0;
+  border: 3px solid var(--cream);
+  background: var(--panel);
+  color: var(--cream);
+  box-shadow: 10px 10px 0 var(--shadow);
+  overflow: auto;
+}
+
+.art-lightbox::backdrop {
+  background: rgba(8, 6, 12, 0.88);
+  backdrop-filter: blur(4px);
+}
+
+.art-lightbox-stage {
+  padding: 20px;
+  background: #f6efe0;
+  display: grid;
+  place-items: center;
+  border-bottom: 2px solid var(--panel-3);
+}
+
+.art-lightbox-stage img {
+  max-height: 68vh;
+  width: auto;
+  max-width: 100%;
+  object-fit: contain;
+  border: 1px solid rgba(21, 16, 25, 0.3);
+  box-shadow: 4px 4px 12px rgba(11, 8, 16, 0.2);
+}
+
+.art-lightbox-info {
+  padding: 16px 20px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+}
+
+.art-lightbox-info h3 {
+  margin: 4px 0 2px;
+  font-family: var(--font-pixel);
+  font-size: 1.6rem;
+  line-height: 0.95;
+  text-transform: uppercase;
+}
+
+.art-lightbox-info p {
+  margin: 0;
+  font-size: 11px;
+  color: var(--muted);
+}
+
+.art-lightbox-nav {
+  display: flex;
+  gap: 8px;
+}
+
+/* Work-media artwork mat option so portrait/landscape previews never clip awkwardly */
+.work-media.is-artwork {
+  background: #ebe0c9;
+  padding: 12px;
+  display: grid;
+  place-items: center;
+}
+
+.work-media.is-artwork img {
+  object-fit: contain;
+  object-position: center;
+  filter: drop-shadow(3px 3px 0 rgba(11, 8, 16, 0.25));
+}
+
+@media (max-width: 960px) {
+  .gallery-masonry {
+    column-count: 2;
+  }
+}
+
+@media (max-width: 640px) {
+  .gallery-masonry {
+    column-count: 1;
+  }
 }
