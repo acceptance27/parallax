@@ -447,7 +447,54 @@ Return this to the group lead. The layout will handle the rest.
   }
 
   /* ------------------------------------------------------------------
-     11. Small utility: current year in footer if marked
+     11. Artwork lightbox
+     ------------------------------------------------------------------ */
+  const artworkDialog = $('#artwork-dialog');
+  if (artworkDialog) {
+    const lightboxImg = $('#lightbox-img');
+    const lightboxTitle = $('#lightbox-title');
+    const lightboxCaption = $('#lightbox-caption');
+    const lightboxClose = $('#lightbox-close');
+    let lightboxTrigger = null;
+
+    const closeLightbox = () => {
+      if (artworkDialog.open) artworkDialog.close();
+    };
+
+    $$('[data-lightbox]').forEach((trigger) => {
+      trigger.addEventListener('click', () => {
+        const src = trigger.getAttribute('data-src') || '';
+        const title = trigger.getAttribute('data-title') || 'ARTWORK';
+        const caption = trigger.getAttribute('data-caption') || '';
+        const img = $('img', trigger);
+        if (lightboxImg) {
+          lightboxImg.src = src;
+          lightboxImg.alt = img ? img.alt : title;
+        }
+        if (lightboxTitle) lightboxTitle.textContent = title;
+        if (lightboxCaption) lightboxCaption.textContent = caption;
+        lightboxTrigger = trigger;
+        if (typeof artworkDialog.showModal === 'function') {
+          if (!artworkDialog.open) artworkDialog.showModal();
+        } else {
+          artworkDialog.setAttribute('open', '');
+        }
+        document.body.classList.add('no-scroll');
+      });
+    });
+
+    if (lightboxClose) lightboxClose.addEventListener('click', closeLightbox);
+    artworkDialog.addEventListener('click', (event) => {
+      if (event.target === artworkDialog) closeLightbox();
+    });
+    artworkDialog.addEventListener('close', () => {
+      document.body.classList.remove('no-scroll');
+      if (lightboxTrigger) lightboxTrigger.focus();
+    });
+  }
+
+  /* ------------------------------------------------------------------
+     12. Small utility: current year in footer if marked
      ------------------------------------------------------------------ */
   $$('[data-year]').forEach((el) => { el.textContent = new Date().getFullYear(); });
 })();
