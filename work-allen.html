@@ -14,6 +14,65 @@
   <link rel="icon" href="assets/favicon.svg" type="image/svg+xml">
   <link rel="preload" href="assets/fonts/pixelify-400.woff2" as="font" type="font/woff2" crossorigin>
   <link rel="stylesheet" href="assets/css/style.css">
+  <style>
+    /* Ensure clickable cards show pointer & lightbox fits whole artwork cleanly */
+    .art-card {
+      cursor: pointer;
+    }
+    .art-lightbox {
+      max-width: min(92vw, 980px);
+      width: 100%;
+      padding: 0;
+      border: 2px solid var(--cream, #f5f0e6);
+      background: var(--bg-dark, #17131f);
+      color: var(--cream, #f5f0e6);
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.75);
+    }
+    .art-lightbox::backdrop {
+      background: rgba(12, 9, 18, 0.85);
+      backdrop-filter: blur(4px);
+    }
+    .art-lightbox-stage {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      background: #0e0b14;
+      padding: 16px;
+      max-height: 68vh;
+    }
+    .art-lightbox-stage img {
+      max-width: 100%;
+      max-height: 64vh;
+      width: auto;
+      height: auto;
+      object-fit: contain;
+      display: block;
+    }
+    .art-lightbox-info {
+      display: flex;
+      flex-wrap: wrap;
+      align-items: flex-end;
+      justify-content: space-between;
+      gap: 16px;
+      padding: 16px 20px;
+      border-top: 1px solid var(--line-strong, rgba(255, 255, 255, 0.16));
+    }
+    .art-lightbox-info h3 {
+      margin: 0 0 6px;
+      font-size: 1.25rem;
+    }
+    .art-lightbox-info p {
+      margin: 0;
+      max-width: 62ch;
+      line-height: 1.5;
+      opacity: 0.9;
+    }
+    .art-lightbox-nav {
+      display: flex;
+      gap: 8px;
+      flex-shrink: 0;
+    }
+  </style>
   <script>document.documentElement.classList.add('js');</script>
 </head>
 <body>
@@ -85,7 +144,7 @@
           <article class="art-card reveal" tabindex="0" role="button"
             data-category="object-anatomy" data-orientation="portrait"
             data-plate="PLATE 01 / 11" data-title="Angel Figurine"
-            data-desc="Tonal value and sculptural drapery study of a winged figurine, balancing highlight gradation against cast shadow.">
+            data-desc="Graphite on Oslo Paper. July 10, 2024. A study of lighting and values on a detailed figure, using an angel figurine I found in our home.">
             <div class="art-frame">
               <span class="art-badge">PORTRAIT</span>
               <img src="assets/img/Allen-drawings/1_Angel-Figurine.jpg" alt="Graphite drawing of an angel figurine with spread wings and flowing robes" loading="lazy" decoding="async">
@@ -101,7 +160,7 @@
           <article class="art-card reveal" tabindex="0" role="button"
             data-category="portrait-study" data-orientation="landscape"
             data-plate="PLATE 02 / 11" data-title="Anna Grigoryevna"
-            data-desc="Graphite on Oslo Paper. July 9, 2024. My first attempt in going back into drawing. Based on a still from the Soviet biographical drama "Twenty Six Days from the Life of Dostoyevsky" (1981) directed by Aleksandr Zarkhi. The drawn character is Anna Grigoryevna played by Yevgeniya Simonova..">
+            data-desc="Graphite on Oslo Paper. July 9, 2024. My first attempt in going back into drawing. Based on a still from the Soviet biographical drama &quot;Twenty Six Days from the Life of Dostoyevsky&quot; (1981) directed by Aleksandr Zarkhi. The drawn character is Anna Grigoryevna played by Yevgeniya Simonova.">
             <div class="art-frame">
               <span class="art-badge">LANDSCAPE</span>
               <img src="assets/img/Allen-drawings/2_Anna-Grigoryevna.jpg" alt="Graphite portrait drawing of Anna Grigoryevna wearing a traditional hat and embroidered collar" loading="lazy" decoding="async">
@@ -370,5 +429,125 @@
 
   <div class="toast" id="toast" role="status" aria-live="polite"></div>
   <script src="assets/js/site.js" defer></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const lightbox = document.getElementById('art-lightbox');
+      const cards = Array.from(document.querySelectorAll('.art-card'));
+      const filterBtns = Array.from(document.querySelectorAll('[data-art-filter]'));
+
+      if (!lightbox || !cards.length) return;
+
+      const lbNum = document.getElementById('lb-num');
+      const lbOrientation = document.getElementById('lb-orientation');
+      const lbImg = document.getElementById('lb-img');
+      const lbTitle = document.getElementById('lb-title');
+      const lbDesc = document.getElementById('lb-desc');
+      const btnClose = document.getElementById('lb-close');
+      const btnPrev = document.getElementById('lb-prev');
+      const btnNext = document.getElementById('lb-next');
+
+      let currentIndex = 0;
+
+      const getVisibleCards = () =>
+        cards.filter((card) => !card.hidden && card.style.display !== 'none');
+
+      const renderLightbox = (card) => {
+        const img = card.querySelector('img');
+        const title = card.dataset.title || card.querySelector('.art-title')?.textContent || '';
+        const desc = card.dataset.desc || card.querySelector('.art-note')?.textContent || '';
+        const plate = card.dataset.plate || '';
+        const orientation = (card.dataset.orientation || '').toUpperCase();
+
+        lbNum.textContent = plate;
+        lbOrientation.textContent = orientation;
+        lbTitle.textContent = title;
+        lbDesc.textContent = desc;
+
+        if (img) {
+          lbImg.src = img.getAttribute('src') || '';
+          lbImg.alt = img.getAttribute('alt') || title;
+        }
+      };
+
+      const openLightbox = (card) => {
+        const visible = getVisibleCards();
+        currentIndex = Math.max(0, visible.indexOf(card));
+        renderLightbox(visible[currentIndex]);
+        if (!lightbox.open) {
+          lightbox.showModal();
+        }
+      };
+
+      const stepLightbox = (delta) => {
+        const visible = getVisibleCards();
+        if (!visible.length) return;
+        currentIndex = (currentIndex + delta + visible.length) % visible.length;
+        renderLightbox(visible[currentIndex]);
+      };
+
+      cards.forEach((card) => {
+        card.addEventListener('click', (e) => {
+          e.preventDefault();
+          openLightbox(card);
+        });
+        card.addEventListener('keydown', (e) => {
+          if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            openLightbox(card);
+          }
+        });
+      });
+
+      btnClose?.addEventListener('click', () => lightbox.close());
+      btnPrev?.addEventListener('click', () => stepLightbox(-1));
+      btnNext?.addEventListener('click', () => stepLightbox(1));
+
+      // Close when clicking the dark backdrop outside the dialog box
+      lightbox.addEventListener('click', (e) => {
+        const rect = lightbox.getBoundingClientRect();
+        const inside =
+          e.clientX >= rect.left &&
+          e.clientX <= rect.right &&
+          e.clientY >= rect.top &&
+          e.clientY <= rect.bottom;
+        if (!inside) {
+          lightbox.close();
+        }
+      });
+
+      // Keyboard navigation while lightbox is open
+      document.addEventListener('keydown', (e) => {
+        if (!lightbox.open) return;
+        if (e.key === 'ArrowLeft') {
+          e.preventDefault();
+          stepLightbox(-1);
+        } else if (e.key === 'ArrowRight') {
+          e.preventDefault();
+          stepLightbox(1);
+        }
+      });
+
+      // Category filtering support (if not already handled in site.js)
+      filterBtns.forEach((btn) => {
+        btn.addEventListener('click', () => {
+          const filter = btn.dataset.artFilter;
+          filterBtns.forEach((b) => {
+            const active = b === btn;
+            b.classList.toggle('is-active', active);
+            b.setAttribute('aria-pressed', String(active));
+            b.style.border = active ? '2px solid var(--cream)' : '2px solid var(--line-strong)';
+            b.style.background = active ? 'var(--gold)' : 'transparent';
+            b.style.color = active ? 'var(--ink)' : 'var(--cream)';
+          });
+
+          cards.forEach((card) => {
+            const match = filter === 'all' || card.dataset.category === filter;
+            card.hidden = !match;
+            card.style.display = match ? '' : 'none';
+          });
+        });
+      });
+    });
+  </script>
 </body>
 </html>
